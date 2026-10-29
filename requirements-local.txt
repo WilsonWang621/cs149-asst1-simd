@@ -1,0 +1,5 @@
+# Python 3.12 compatible plotting environment for prog6_kmeans/plot.py.
+# The original requirements.txt pins matplotlib to the older 3.6 series.
+numpy==1.26.4
+matplotlib==3.9.4
+scikit-learn==1.5.2

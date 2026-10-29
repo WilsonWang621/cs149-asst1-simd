@@ -1,0 +1,20 @@
+# Local toolchain and Python environment
+/.tools/
+/.venv/
+__pycache__/
+
+# Build products
+**/objs/
+*.o
+/prog1_mandelbrot_threads/mandelbrot
+/prog2_vecintrin/myexp
+/prog3_mandelbrot_ispc/mandelbrot_ispc
+/prog4_sqrt/sqrt
+/prog5_saxpy/saxpy
+/prog6_kmeans/kmeans
+
+# Experiment data and generated visualizations
+*.ppm
+/prog6_kmeans/data.dat
+/prog6_kmeans/*.log
+/prog6_kmeans/*.png
