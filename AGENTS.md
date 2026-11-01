@@ -8,3 +8,4 @@ These rules apply to this directory and all its subdirectories.
 4. Keep responses concise and clear. Answer only what the user asks, without unsolicited elaboration or scope expansion.
 5. Use English for code, comments, documentation, and other project file content. Use Chinese for conversation with the user.
 6. After each completed Program 1 task, record the development work, implementation rationale, validation results, and any measured performance data in `docs/a1/`.
+7. When you judge that a task milestone has been completed, create a Git commit containing the relevant changes.
