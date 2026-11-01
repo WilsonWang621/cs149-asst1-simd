@@ -13,6 +13,7 @@ typedef struct {
     int* output;
     int threadId;
     int numThreads;
+    double elapsedSeconds;
 } WorkerArgs;
 
 
@@ -29,6 +30,7 @@ extern void mandelbrotSerial(
 //
 // Thread entrypoint.
 void workerThreadStart(WorkerArgs * const args) {
+    const double startTime = CycleTimer::currentSeconds();
 
     // Adjacent blocks share a boundary, covering every row exactly once.
     const int startRow = args->height * args->threadId / args->numThreads;
@@ -38,6 +40,8 @@ void workerThreadStart(WorkerArgs * const args) {
     mandelbrotSerial(args->x0, args->y0, args->x1, args->y1,
                      args->width, args->height, startRow, numRows,
                      args->maxIterations, args->output);
+    const double endTime = CycleTimer::currentSeconds();
+    args->elapsedSeconds = endTime - startTime;
 }
 
 //
@@ -49,7 +53,7 @@ void mandelbrotThread(
     int numThreads,
     float x0, float y0, float x1, float y1,
     int width, int height,
-    int maxIterations, int output[])
+    int maxIterations, int output[], double threadSeconds[] = nullptr)
 {
     static constexpr int MAX_THREADS = 32;
 
@@ -93,6 +97,12 @@ void mandelbrotThread(
     // join worker threads
     for (int i=1; i<numThreads; i++) {
         workers[i].join();
+    }
+
+    // Read worker measurements only after every worker has finished.
+    if (threadSeconds != nullptr) {
+        for (int i = 0; i < numThreads; ++i)
+            threadSeconds[i] = args[i].elapsedSeconds;
     }
 }
 

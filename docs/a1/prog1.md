@@ -1,6 +1,6 @@
 # Program 1 Development Log
 
-The latest completed stage is documented in [Mandelbrot: Contiguous-Row Baseline](contiguous-baseline.md), including the 2-to-8-thread measurements, both speedup curves, and correctness checks. The entries below preserve earlier development observations.
+The latest completed stage is documented in [Mandelbrot: Measuring Thread Load Imbalance](thread-load-analysis.md). The [contiguous-row baseline](contiguous-baseline.md) preserves the earlier 2-to-8-thread measurements and speedup curves. The entries below record the development stages.
 
 ## 2026-11-02: Starter Program Baseline
 
@@ -60,3 +60,9 @@ These measurements were collected in the current local workspace environment, no
 The two-thread split was extended to a shared integer-boundary rule for all supported thread counts. Both views passed full-image validation with 2 through 8 threads. An instrumented coverage check also passed all 192 configurations, including non-divisible heights and empty blocks. Eight-thread speedups were 4.10x for View 1 and 4.21x for View 2.
 
 The [baseline report](contiguous-baseline.md) explains the implementation and measurement method for readers. Raw output, CSV data, the plot, and reproducibility tools are stored directly in this directory. The stage is preserved by the Git tag `prog1-contiguous-baseline` for comparison with future optimizations.
+
+## 2026-11-02: Per-Thread Timing and Load Analysis
+
+Added entry/exit timing to each worker and returned measurements to the main thread for output after the overall timer stops. The row partition and pixel computation are unchanged. All 14 view/thread configurations passed image validation; 350 worker measurements were recorded across five repetitions per configuration. The instrumented implementation also passed all 192 row-coverage checks.
+
+View 1's three-thread measurement confirms the suspected load imbalance: the middle worker took 252.830 ms, while the outer workers took 81.109 ms and 81.895 ms. The resulting 1.65x speedup reproduces the earlier three-thread dip. View 2's corresponding durations were 106.617 ms, 65.640 ms, and 61.043 ms. The [analysis report](thread-load-analysis.md) relates these results to pixel brightness, iteration counts, and the preserved speedup curves. New data and plots use the `thread-timing-*` prefix to preserve the previous baseline artifacts.

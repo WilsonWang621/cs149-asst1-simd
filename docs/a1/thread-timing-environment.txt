@@ -1,0 +1,139 @@
+UTC start: 2026-11-01T19:09:17.547009+00:00
+Platform: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39
+1600 x 1200 pixels; 256 maximum iterations; contiguous rows.
+Five repetitions per configuration; sequential configurations; no affinity pinning.
+Worker and overall intervals exclude timing output.
+$ g++ --version
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+$ lscpu
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               24
+On-line CPU(s) list:                  0-23
+Vendor ID:                            GenuineIntel
+Model name:                           Intel(R) Core(TM) i7-14650HX
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   12
+Socket(s):                            1
+Stepping:                             1
+BogoMIPS:                             4838.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities
+Virtualization:                       VT-x
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            576 KiB (12 instances)
+L1i cache:                            384 KiB (12 instances)
+L2 cache:                             24 MiB (12 instances)
+L3 cache:                             30 MiB (1 instance)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-23
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+$ git diff -- prog1_mandelbrot_threads
+diff --git a/prog1_mandelbrot_threads/main.cpp b/prog1_mandelbrot_threads/main.cpp
+index e5f9e7b..0b797bb 100644
+--- a/prog1_mandelbrot_threads/main.cpp
++++ b/prog1_mandelbrot_threads/main.cpp
+@@ -17,7 +17,7 @@ extern void mandelbrotThread(
+     float x0, float y0, float x1, float y1,
+     int width, int height,
+     int maxIterations,
+-    int output[]);
++    int output[], double threadSeconds[]);
+
+ extern void writePPMImage(
+     int* data,
+@@ -147,10 +147,21 @@ int main(int argc, char** argv) {
+     double minThread = 1e30;
+     for (int i = 0; i < 5; ++i) {
+       memset(output_thread, 0, width * height * sizeof(int));
++        double threadSeconds[32];
+         double startTime = CycleTimer::currentSeconds();
+-        mandelbrotThread(numThreads, x0, y0, x1, y1, width, height, maxIterations, output_thread);
++        mandelbrotThread(numThreads, x0, y0, x1, y1, width, height,
++                         maxIterations, output_thread, threadSeconds);
+         double endTime = CycleTimer::currentSeconds();
+         minThread = std::min(minThread, endTime - startTime);
++
++        // All printing is outside both worker and overall timing intervals.
++        printf("[threaded run] run=%d elapsed_ms=%.6f\n",
++               i + 1, (endTime - startTime) * 1000);
++        for (int thread = 0; thread < numThreads; ++thread) {
++            printf("[worker timing] run=%d thread=%d start_row=%u end_row=%u elapsed_ms=%.6f\n",
++                   i + 1, thread, height * thread / numThreads,
++                   height * (thread + 1) / numThreads, threadSeconds[thread] * 1000);
++        }
+     }
+
+     printf("[mandelbrot thread]:\t\t[%.3f] ms\n", minThread * 1000);
+diff --git a/prog1_mandelbrot_threads/mandelbrotThread.cpp b/prog1_mandelbrot_threads/mandelbrotThread.cpp
+index 18d7f35..e6ae5ce 100644
+--- a/prog1_mandelbrot_threads/mandelbrotThread.cpp
++++ b/prog1_mandelbrot_threads/mandelbrotThread.cpp
+@@ -13,6 +13,7 @@ typedef struct {
+     int* output;
+     int threadId;
+     int numThreads;
++    double elapsedSeconds;
+ } WorkerArgs;
+
+
+@@ -29,6 +30,7 @@ extern void mandelbrotSerial(
+ //
+ // Thread entrypoint.
+ void workerThreadStart(WorkerArgs * const args) {
++    const double startTime = CycleTimer::currentSeconds();
+
+     // Adjacent blocks share a boundary, covering every row exactly once.
+     const int startRow = args->height * args->threadId / args->numThreads;
+@@ -38,6 +40,8 @@ void workerThreadStart(WorkerArgs * const args) {
+     mandelbrotSerial(args->x0, args->y0, args->x1, args->y1,
+                      args->width, args->height, startRow, numRows,
+                      args->maxIterations, args->output);
++    const double endTime = CycleTimer::currentSeconds();
++    args->elapsedSeconds = endTime - startTime;
+ }
+
+ //
+@@ -49,7 +53,7 @@ void mandelbrotThread(
+     int numThreads,
+     float x0, float y0, float x1, float y1,
+     int width, int height,
+-    int maxIterations, int output[])
++    int maxIterations, int output[], double threadSeconds[] = nullptr)
+ {
+     static constexpr int MAX_THREADS = 32;
+
+@@ -94,5 +98,11 @@ void mandelbrotThread(
+     for (int i=1; i<numThreads; i++) {
+         workers[i].join();
+     }
++
++    // Read worker measurements only after every worker has finished.
++    if (threadSeconds != nullptr) {
++        for (int i = 0; i < numThreads; ++i)
++            threadSeconds[i] = args[i].elapsedSeconds;
++    }
+ }
