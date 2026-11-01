@@ -1,6 +1,6 @@
 # Program 1 Development Log
 
-The latest completed stage is documented in [Mandelbrot: Balancing Work with Cyclic Rows](cyclic-load-balancing.md). The [thread-load analysis](thread-load-analysis.md) and [contiguous-row baseline](contiguous-baseline.md) preserve the earlier measurements. The entries below record the development stages.
+The [complete Program 1 report](prog1-report.md) brings together the initial decomposition, load analysis, cyclic optimization, and final 8/16-thread comparison. The entries below record the development stages; the earlier datasets remain unchanged.
 
 ## 2026-11-02: Starter Program Baseline
 
@@ -72,3 +72,9 @@ View 1's three-thread measurement confirms the suspected load imbalance: the mid
 Changed row ownership to `row % N` so every worker samples regions throughout the image using one static rule. No synchronization or communication was added during rendering. Updated timing output to include the row stride, and stored new measurements under the `cyclic-*` prefix.
 
 Both views passed full-image validation for 2 through 8 threads, and the current worker passed all 192 row-coverage configurations. Eight-thread speedup reached 7.38x on View 1 and 7.23x on View 2. Worker duration ratios dropped from 16.59 to 1.06 and from 2.44 to 1.08, respectively. The [cyclic assignment report](cyclic-load-balancing.md) presents the data and comparison with the preserved contiguous implementation. After reviewing the test results, the user authorized committing this stage.
+
+## 2026-11-02: Sixteen Threads and Consolidated Report
+
+Tested the unchanged cyclic implementation at commit `6dc4104` with 8 and 16 threads for both views. All four configurations passed full-image validation. In the final session, eight-thread speedups were 7.48x and 7.51x; sixteen-thread speedups were 12.85x and 11.85x. Sixteen threads reduced runtime by factors of 1.71 and 1.56 relative to eight threads.
+
+The [complete report](prog1-report.md) records the Intel model's 16 physical cores (8P + 8E), 24 hardware threads, and WSL's separately reported virtual topology. It connects the earlier work-distribution experiments with these final measurements and distinguishes supported observations from scheduling hypotheses. Raw output, all 240 worker records, summaries, environment information, and a plot use the `final-8-16-*` prefix. No renderer source was modified. After reviewing the results, the user authorized committing the final report and experimental data.
