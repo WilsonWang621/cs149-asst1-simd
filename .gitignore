@@ -15,6 +15,7 @@ __pycache__/
 
 # Experiment data and generated visualizations
 *.ppm
+/prog1_mandelbrot_threads/mandelbrot-*.png
 /prog6_kmeans/data.dat
 /prog6_kmeans/*.log
 /prog6_kmeans/*.png
