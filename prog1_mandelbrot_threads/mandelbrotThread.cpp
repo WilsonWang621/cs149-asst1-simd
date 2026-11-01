@@ -30,11 +30,10 @@ extern void mandelbrotSerial(
 // Thread entrypoint.
 void workerThreadStart(WorkerArgs * const args) {
 
-    // Thread 0 computes the top half; thread 1 computes the bottom half.
-    const int halfHeight = args->height / 2;
-    const int startRow = args->threadId == 0 ? 0 : halfHeight;
-    const int numRows = args->threadId == 0
-        ? halfHeight : args->height - halfHeight;
+    // Adjacent blocks share a boundary, covering every row exactly once.
+    const int startRow = args->height * args->threadId / args->numThreads;
+    const int endRow = args->height * (args->threadId + 1) / args->numThreads;
+    const int numRows = endRow - startRow;
 
     mandelbrotSerial(args->x0, args->y0, args->x1, args->y1,
                      args->width, args->height, startRow, numRows,
@@ -54,9 +53,9 @@ void mandelbrotThread(
 {
     static constexpr int MAX_THREADS = 32;
 
-    if (numThreads > MAX_THREADS)
+    if (numThreads < 1 || numThreads > MAX_THREADS)
     {
-        fprintf(stderr, "Error: Max allowed threads is %d\n", MAX_THREADS);
+        fprintf(stderr, "Error: Thread count must be between 1 and %d\n", MAX_THREADS);
         exit(1);
     }
 

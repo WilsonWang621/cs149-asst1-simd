@@ -1,5 +1,7 @@
 # Program 1 Development Log
 
+The latest completed stage is documented in [Mandelbrot: Contiguous-Row Baseline](contiguous-baseline.md), including the 2-to-8-thread measurements, both speedup curves, and correctness checks. The entries below preserve earlier development observations.
+
 ## 2026-11-02: Starter Program Baseline
 
 - Built with `make` and ran `./mandelbrot` in `prog1_mandelbrot_threads/`.
@@ -52,3 +54,9 @@ These measurements were collected in the current local workspace environment, no
 - Added generated Program 1 PNG previews to `.gitignore`. Existing rules already exclude executables, object files, PPM output, local toolchains, and the Python environment.
 - Included the existing `main.cpp` comment correction so it accurately describes the five timing repetitions.
 - No new performance measurements were taken.
+
+## 2026-11-02: Generalized Contiguous Blocks
+
+The two-thread split was extended to a shared integer-boundary rule for all supported thread counts. Both views passed full-image validation with 2 through 8 threads. An instrumented coverage check also passed all 192 configurations, including non-divisible heights and empty blocks. Eight-thread speedups were 4.10x for View 1 and 4.21x for View 2.
+
+The [baseline report](contiguous-baseline.md) explains the implementation and measurement method for readers. Raw output, CSV data, the plot, and reproducibility tools are stored directly in this directory. The stage is preserved by the Git tag `prog1-contiguous-baseline` for comparison with future optimizations.
