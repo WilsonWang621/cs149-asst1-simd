@@ -1,6 +1,6 @@
 # Program 1 Development Log
 
-The latest completed stage is documented in [Mandelbrot: Measuring Thread Load Imbalance](thread-load-analysis.md). The [contiguous-row baseline](contiguous-baseline.md) preserves the earlier 2-to-8-thread measurements and speedup curves. The entries below record the development stages.
+The latest completed stage is documented in [Mandelbrot: Balancing Work with Cyclic Rows](cyclic-load-balancing.md). The [thread-load analysis](thread-load-analysis.md) and [contiguous-row baseline](contiguous-baseline.md) preserve the earlier measurements. The entries below record the development stages.
 
 ## 2026-11-02: Starter Program Baseline
 
@@ -66,3 +66,9 @@ The [baseline report](contiguous-baseline.md) explains the implementation and me
 Added entry/exit timing to each worker and returned measurements to the main thread for output after the overall timer stops. The row partition and pixel computation are unchanged. All 14 view/thread configurations passed image validation; 350 worker measurements were recorded across five repetitions per configuration. The instrumented implementation also passed all 192 row-coverage checks.
 
 View 1's three-thread measurement confirms the suspected load imbalance: the middle worker took 252.830 ms, while the outer workers took 81.109 ms and 81.895 ms. The resulting 1.65x speedup reproduces the earlier three-thread dip. View 2's corresponding durations were 106.617 ms, 65.640 ms, and 61.043 ms. The [analysis report](thread-load-analysis.md) relates these results to pixel brightness, iteration counts, and the preserved speedup curves. New data and plots use the `thread-timing-*` prefix to preserve the previous baseline artifacts.
+
+## 2026-11-02: Cyclic Row Assignment
+
+Changed row ownership to `row % N` so every worker samples regions throughout the image using one static rule. No synchronization or communication was added during rendering. Updated timing output to include the row stride, and stored new measurements under the `cyclic-*` prefix.
+
+Both views passed full-image validation for 2 through 8 threads, and the current worker passed all 192 row-coverage configurations. Eight-thread speedup reached 7.38x on View 1 and 7.23x on View 2. Worker duration ratios dropped from 16.59 to 1.06 and from 2.44 to 1.08, respectively. The [cyclic assignment report](cyclic-load-balancing.md) presents the data and comparison with the preserved contiguous implementation. After reviewing the test results, the user authorized committing this stage.

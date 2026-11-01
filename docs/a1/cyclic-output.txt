@@ -1,0 +1,518 @@
+$ ./mandelbrot --threads 2 --view 1
+[mandelbrot serial]:		[430.190] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=219.548021
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=217.010134
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=217.817953
+[threaded run] run=2 elapsed_ms=211.819971
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=211.606219
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=211.489319
+[threaded run] run=3 elapsed_ms=217.039811
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=215.845570
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=216.618662
+[threaded run] run=4 elapsed_ms=215.344149
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=213.881983
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=215.017944
+[threaded run] run=5 elapsed_ms=217.114701
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=215.199462
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=216.842444
+[mandelbrot thread]:		[211.820] ms
+Wrote image file mandelbrot-thread.ppm
+				(2.03x speedup from 2 threads)
+Exit status: 0
+$ ./mandelbrot --threads 3 --view 1
+[mandelbrot serial]:		[421.022] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=146.683859
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=140.991090
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=138.883970
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=146.223947
+[threaded run] run=2 elapsed_ms=138.957889
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=137.805041
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=138.358092
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=138.582096
+[threaded run] run=3 elapsed_ms=145.584086
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=139.795993
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=142.002468
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=145.140589
+[threaded run] run=4 elapsed_ms=142.651127
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=141.860737
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=140.265109
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=142.393824
+[threaded run] run=5 elapsed_ms=149.412300
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=144.994922
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=149.179387
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=145.311229
+[mandelbrot thread]:		[138.958] ms
+Wrote image file mandelbrot-thread.ppm
+				(3.03x speedup from 3 threads)
+Exit status: 0
+$ ./mandelbrot --threads 4 --view 1
+[mandelbrot serial]:		[417.858] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=106.540618
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=105.424877
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=105.445734
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=105.785413
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=104.671113
+[threaded run] run=2 elapsed_ms=105.375739
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=105.118385
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=105.194882
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=104.512748
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=105.154267
+[threaded run] run=3 elapsed_ms=107.707265
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=103.774289
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=103.169951
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=103.578090
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=106.616814
+[threaded run] run=4 elapsed_ms=105.164931
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=104.378358
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=104.980072
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=103.324505
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=103.047637
+[threaded run] run=5 elapsed_ms=105.056852
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=103.877649
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=104.885848
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=104.329379
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=103.868580
+[mandelbrot thread]:		[105.057] ms
+Wrote image file mandelbrot-thread.ppm
+				(3.98x speedup from 4 threads)
+Exit status: 0
+$ ./mandelbrot --threads 5 --view 1
+[mandelbrot serial]:		[419.102] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=95.938615
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=88.410781
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=95.548982
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=91.218808
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=85.937041
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=93.162853
+[threaded run] run=2 elapsed_ms=85.547733
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=84.951467
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=83.203274
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=84.188441
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=83.155202
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=83.994291
+[threaded run] run=3 elapsed_ms=84.010432
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=83.158173
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=83.411212
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=83.569936
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=82.995069
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=83.636668
+[threaded run] run=4 elapsed_ms=83.504363
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=82.798082
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=83.217713
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=81.981743
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=82.614308
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=82.947531
+[threaded run] run=5 elapsed_ms=85.570416
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=84.779822
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=85.205694
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=84.331469
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=84.497747
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=85.082233
+[mandelbrot thread]:		[83.504] ms
+Wrote image file mandelbrot-thread.ppm
+				(5.02x speedup from 5 threads)
+Exit status: 0
+$ ./mandelbrot --threads 6 --view 1
+[mandelbrot serial]:		[417.892] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=69.497063
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=68.693356
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=68.453006
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=68.476773
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=68.264410
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=68.685824
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=69.097524
+[threaded run] run=2 elapsed_ms=70.813573
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=69.534705
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=68.594079
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=70.198767
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=70.076667
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=68.261587
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=70.449029
+[threaded run] run=3 elapsed_ms=69.807821
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=69.558622
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=68.256172
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=68.718817
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=68.343335
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=68.481144
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=69.021097
+[threaded run] run=4 elapsed_ms=69.413787
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=69.072467
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=68.875144
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=68.145694
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=68.866562
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=69.024321
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=68.287102
+[threaded run] run=5 elapsed_ms=69.792423
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=68.438122
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=68.562936
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=68.646413
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=68.547638
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=68.845120
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=69.306825
+[mandelbrot thread]:		[69.414] ms
+Wrote image file mandelbrot-thread.ppm
+				(6.02x speedup from 6 threads)
+Exit status: 0
+$ ./mandelbrot --threads 7 --view 1
+[mandelbrot serial]:		[416.702] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=64.969202
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=62.225605
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=58.474092
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=64.657752
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=61.320883
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=60.803358
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=60.021645
+[worker timing] run=1 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=59.701386
+[threaded run] run=2 elapsed_ms=60.653946
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=60.228208
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=59.288252
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=59.126288
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=59.769996
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=59.247237
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=59.394089
+[worker timing] run=2 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=60.046485
+[threaded run] run=3 elapsed_ms=59.863588
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=58.548138
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=58.766605
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=59.497680
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=58.420976
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=58.510916
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=59.423183
+[worker timing] run=3 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=58.463186
+[threaded run] run=4 elapsed_ms=59.429459
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=58.781171
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=58.809059
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=58.804521
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=58.612041
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=58.541863
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=58.846238
+[worker timing] run=4 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=58.470182
+[threaded run] run=5 elapsed_ms=60.301018
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=58.807569
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=58.470580
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=59.127915
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=58.429272
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=58.667717
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=59.780098
+[worker timing] run=5 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=59.137094
+[mandelbrot thread]:		[59.429] ms
+Wrote image file mandelbrot-thread.ppm
+				(7.01x speedup from 7 threads)
+Exit status: 0
+$ ./mandelbrot --threads 8 --view 1
+[mandelbrot serial]:		[415.494] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=90.465127
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=62.886203
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=62.026073
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=80.578180
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=76.869376
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=56.016855
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=70.051557
+[worker timing] run=1 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=69.759931
+[worker timing] run=1 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=77.010894
+[threaded run] run=2 elapsed_ms=56.373234
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=53.008116
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=53.852842
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=56.064299
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=54.122591
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=55.458751
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=55.464448
+[worker timing] run=2 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=54.583583
+[worker timing] run=2 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=53.617944
+[threaded run] run=3 elapsed_ms=57.207923
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=54.262091
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=54.028142
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=55.449867
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=53.884804
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=52.992922
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=55.103811
+[worker timing] run=3 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=56.579767
+[worker timing] run=3 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=54.243691
+[threaded run] run=4 elapsed_ms=56.310880
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=55.788922
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=54.822955
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=53.037604
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=53.507954
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=54.878564
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=54.684215
+[worker timing] run=4 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=52.801298
+[worker timing] run=4 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=52.828328
+[threaded run] run=5 elapsed_ms=56.689154
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=53.902276
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=54.051338
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=55.539712
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=53.622279
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=53.376498
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=56.142903
+[worker timing] run=5 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=54.733024
+[worker timing] run=5 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=55.195545
+[mandelbrot thread]:		[56.311] ms
+Wrote image file mandelbrot-thread.ppm
+				(7.38x speedup from 8 threads)
+Exit status: 0
+$ ./mandelbrot --threads 2 --view 2
+[mandelbrot serial]:		[238.183] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=121.105836
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=118.456487
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=119.267483
+[threaded run] run=2 elapsed_ms=121.058751
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=120.990701
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=119.426696
+[threaded run] run=3 elapsed_ms=119.780284
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=119.696691
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=118.783673
+[threaded run] run=4 elapsed_ms=120.507969
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=120.419403
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=118.896368
+[threaded run] run=5 elapsed_ms=119.407059
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=2 elapsed_ms=119.319556
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=2 elapsed_ms=119.145052
+[mandelbrot thread]:		[119.407] ms
+Wrote image file mandelbrot-thread.ppm
+				(1.99x speedup from 2 threads)
+Exit status: 0
+$ ./mandelbrot --threads 3 --view 2
+[mandelbrot serial]:		[237.501] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=81.406152
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=79.626626
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=79.213048
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=79.851286
+[threaded run] run=2 elapsed_ms=81.226693
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=79.294549
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=80.980516
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=78.442018
+[threaded run] run=3 elapsed_ms=81.004430
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=80.376351
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=80.852748
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=78.911763
+[threaded run] run=4 elapsed_ms=81.973592
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=79.448799
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=80.269324
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=81.506363
+[threaded run] run=5 elapsed_ms=80.127721
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=3 elapsed_ms=80.014072
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=3 elapsed_ms=79.877683
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=3 elapsed_ms=79.367229
+[mandelbrot thread]:		[80.128] ms
+Wrote image file mandelbrot-thread.ppm
+				(2.96x speedup from 3 threads)
+Exit status: 0
+$ ./mandelbrot --threads 4 --view 2
+[mandelbrot serial]:		[240.615] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=61.848197
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=60.520329
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=59.879164
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=59.728910
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=59.599833
+[threaded run] run=2 elapsed_ms=59.319119
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=59.081889
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=59.006027
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=58.730465
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=58.900010
+[threaded run] run=3 elapsed_ms=60.127256
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=59.658954
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=58.885413
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=59.914478
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=58.955674
+[threaded run] run=4 elapsed_ms=60.620791
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=60.319477
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=59.531404
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=59.286590
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=59.664919
+[threaded run] run=5 elapsed_ms=59.000638
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=4 elapsed_ms=58.878367
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=4 elapsed_ms=58.599634
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=4 elapsed_ms=58.558715
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=4 elapsed_ms=58.610965
+[mandelbrot thread]:		[59.001] ms
+Wrote image file mandelbrot-thread.ppm
+				(4.08x speedup from 4 threads)
+Exit status: 0
+$ ./mandelbrot --threads 5 --view 2
+[mandelbrot serial]:		[234.923] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=50.148135
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=49.765367
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=48.830330
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=48.908912
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=49.222614
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=48.042245
+[threaded run] run=2 elapsed_ms=48.532049
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=47.416269
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=47.952256
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=47.854564
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=48.152307
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=47.072638
+[threaded run] run=3 elapsed_ms=48.408354
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=47.979762
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=47.780373
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=48.119010
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=48.153075
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=47.410972
+[threaded run] run=4 elapsed_ms=49.247510
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=47.962751
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=47.481200
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=49.040055
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=47.787187
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=48.235851
+[threaded run] run=5 elapsed_ms=48.539871
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=5 elapsed_ms=48.260603
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=5 elapsed_ms=48.369906
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=5 elapsed_ms=47.800291
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=5 elapsed_ms=47.029985
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=5 elapsed_ms=47.415339
+[mandelbrot thread]:		[48.408] ms
+Wrote image file mandelbrot-thread.ppm
+				(4.85x speedup from 5 threads)
+Exit status: 0
+$ ./mandelbrot --threads 6 --view 2
+[mandelbrot serial]:		[234.184] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=63.797276
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=50.349822
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=39.987584
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=58.456096
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=52.350421
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=44.006159
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=49.348772
+[threaded run] run=2 elapsed_ms=41.339709
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=41.045503
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=39.356406
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=40.131637
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=39.673066
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=39.576613
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=39.197846
+[threaded run] run=3 elapsed_ms=40.930911
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=40.488874
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=40.475953
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=40.147511
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=40.446684
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=39.133497
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=38.954572
+[threaded run] run=4 elapsed_ms=40.481927
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=39.879736
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=39.379357
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=40.232763
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=40.156292
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=39.651741
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=39.534805
+[threaded run] run=5 elapsed_ms=39.938004
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=6 elapsed_ms=39.086096
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=6 elapsed_ms=39.521801
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=6 elapsed_ms=39.691906
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=6 elapsed_ms=39.210156
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=6 elapsed_ms=38.649314
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=6 elapsed_ms=38.619604
+[mandelbrot thread]:		[39.938] ms
+Wrote image file mandelbrot-thread.ppm
+				(5.86x speedup from 6 threads)
+Exit status: 0
+$ ./mandelbrot --threads 7 --view 2
+[mandelbrot serial]:		[234.690] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=37.920604
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=34.030260
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=33.994563
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=34.367969
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=33.223970
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=36.466254
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=36.670133
+[worker timing] run=1 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=36.689176
+[threaded run] run=2 elapsed_ms=36.077944
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=33.957114
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=34.451497
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=35.142167
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=35.701413
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=33.402459
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=33.306243
+[worker timing] run=2 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=33.771581
+[threaded run] run=3 elapsed_ms=35.189417
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=34.860581
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=33.814808
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=33.853110
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=33.235302
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=34.139439
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=33.218720
+[worker timing] run=3 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=33.106305
+[threaded run] run=4 elapsed_ms=35.101297
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=33.470554
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=34.359960
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=34.012847
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=33.113586
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=34.679860
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=33.752331
+[worker timing] run=4 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=33.676502
+[threaded run] run=5 elapsed_ms=35.290692
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=7 elapsed_ms=34.145899
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=7 elapsed_ms=33.875713
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=7 elapsed_ms=33.445423
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=7 elapsed_ms=33.416492
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=7 elapsed_ms=33.472776
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=7 elapsed_ms=33.687561
+[worker timing] run=5 thread=6 start_row=6 end_row=1200 row_stride=7 elapsed_ms=34.481977
+[mandelbrot thread]:		[35.101] ms
+Wrote image file mandelbrot-thread.ppm
+				(6.69x speedup from 7 threads)
+Exit status: 0
+$ ./mandelbrot --threads 8 --view 2
+[mandelbrot serial]:		[233.112] ms
+Wrote image file mandelbrot-serial.ppm
+[threaded run] run=1 elapsed_ms=35.493503
+[worker timing] run=1 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=31.701634
+[worker timing] run=1 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=33.317858
+[worker timing] run=1 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=34.421422
+[worker timing] run=1 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=32.860584
+[worker timing] run=1 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=32.878989
+[worker timing] run=1 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=31.236352
+[worker timing] run=1 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=33.957286
+[worker timing] run=1 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=30.574291
+[threaded run] run=2 elapsed_ms=35.109380
+[worker timing] run=2 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=34.750350
+[worker timing] run=2 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=32.272831
+[worker timing] run=2 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=29.871901
+[worker timing] run=2 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=34.388328
+[worker timing] run=2 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=33.126439
+[worker timing] run=2 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=30.175442
+[worker timing] run=2 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=31.088582
+[worker timing] run=2 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=32.607953
+[threaded run] run=3 elapsed_ms=32.258127
+[worker timing] run=3 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=30.188960
+[worker timing] run=3 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=30.645883
+[worker timing] run=3 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=29.977322
+[worker timing] run=3 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=30.226804
+[worker timing] run=3 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=29.495921
+[worker timing] run=3 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=31.752107
+[worker timing] run=3 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=29.697470
+[worker timing] run=3 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=29.452327
+[threaded run] run=4 elapsed_ms=33.279699
+[worker timing] run=4 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=29.242131
+[worker timing] run=4 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=29.801921
+[worker timing] run=4 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=29.044370
+[worker timing] run=4 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=29.458436
+[worker timing] run=4 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=29.026842
+[worker timing] run=4 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=32.848490
+[worker timing] run=4 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=28.946276
+[worker timing] run=4 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=32.106048
+[threaded run] run=5 elapsed_ms=33.166966
+[worker timing] run=5 thread=0 start_row=0 end_row=1200 row_stride=8 elapsed_ms=32.769158
+[worker timing] run=5 thread=1 start_row=1 end_row=1200 row_stride=8 elapsed_ms=29.288687
+[worker timing] run=5 thread=2 start_row=2 end_row=1200 row_stride=8 elapsed_ms=29.119952
+[worker timing] run=5 thread=3 start_row=3 end_row=1200 row_stride=8 elapsed_ms=29.175797
+[worker timing] run=5 thread=4 start_row=4 end_row=1200 row_stride=8 elapsed_ms=31.100495
+[worker timing] run=5 thread=5 start_row=5 end_row=1200 row_stride=8 elapsed_ms=32.692127
+[worker timing] run=5 thread=6 start_row=6 end_row=1200 row_stride=8 elapsed_ms=29.575561
+[worker timing] run=5 thread=7 start_row=7 end_row=1200 row_stride=8 elapsed_ms=29.164320
+[mandelbrot thread]:		[32.258] ms
+Wrote image file mandelbrot-thread.ppm
+				(7.23x speedup from 8 threads)
+Exit status: 0

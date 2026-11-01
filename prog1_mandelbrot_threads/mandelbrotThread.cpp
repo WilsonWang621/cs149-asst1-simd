@@ -32,14 +32,13 @@ extern void mandelbrotSerial(
 void workerThreadStart(WorkerArgs * const args) {
     const double startTime = CycleTimer::currentSeconds();
 
-    // Adjacent blocks share a boundary, covering every row exactly once.
-    const int startRow = args->height * args->threadId / args->numThreads;
-    const int endRow = args->height * (args->threadId + 1) / args->numThreads;
-    const int numRows = endRow - startRow;
-
-    mandelbrotSerial(args->x0, args->y0, args->x1, args->y1,
-                     args->width, args->height, startRow, numRows,
-                     args->maxIterations, args->output);
+    // Spread expensive regions across workers using cyclic row ownership.
+    for (unsigned int row = args->threadId; row < args->height;
+         row += args->numThreads) {
+        mandelbrotSerial(args->x0, args->y0, args->x1, args->y1,
+                         args->width, args->height, row, 1,
+                         args->maxIterations, args->output);
+    }
     const double endTime = CycleTimer::currentSeconds();
     args->elapsedSeconds = endTime - startTime;
 }

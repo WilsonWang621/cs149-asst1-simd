@@ -158,9 +158,9 @@ int main(int argc, char** argv) {
         printf("[threaded run] run=%d elapsed_ms=%.6f\n",
                i + 1, (endTime - startTime) * 1000);
         for (int thread = 0; thread < numThreads; ++thread) {
-            printf("[worker timing] run=%d thread=%d start_row=%u end_row=%u elapsed_ms=%.6f\n",
-                   i + 1, thread, height * thread / numThreads,
-                   height * (thread + 1) / numThreads, threadSeconds[thread] * 1000);
+            printf("[worker timing] run=%d thread=%d start_row=%d end_row=%u row_stride=%d elapsed_ms=%.6f\n",
+                   i + 1, thread, thread, height, numThreads,
+                   threadSeconds[thread] * 1000);
         }
     }
 
